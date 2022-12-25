@@ -268,7 +268,7 @@ p#single-header-date:before, .list-item-date:before {
 .list-item-img {
   display: block;
   width: 200px;
-  height: 200px;
+  height: 100%;
   float: left;
   margin-right: 15px;
   object-fit: cover;
