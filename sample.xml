@@ -28,8 +28,6 @@ Url:       https://qooq.dododori.com
 Lisense:   カスタマイズ、再配布は自由です.販売は禁止です
 ----------------------------------------------------------------------------- */
 
-
-
 /* こっちはテンプレートデザイナーで設定可 */
 /*
 <Group description="文字の色">
@@ -286,6 +284,14 @@ p#single-header-date:before, .list-item-date:before {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+}
+@media ( max-width : 600px ) {
+.list-item-inner {
+	min-height: 150px;
+}
+.post-snippet {
+	display: none;
+}
 }
 @media ( max-width : 480px ) {
 	#list{
@@ -727,7 +733,6 @@ input.gsc-input{
 	color: $(font.color);
 }
 
-
    ]]></b:skin>
 
     <b:include data='blog' name='google-analytics'/>
@@ -945,12 +950,12 @@ input.gsc-input{
                     </b:loop>
                   </div>
                 </b:if>
-<b:if cond='data:blog.pageType == "item"'>
-  <div id='related-posts'></div>
+<b:if cond='data:blog.pageType == &quot;item&quot;'>
+  <div id='related-posts'/>
   <script type='text/javascript'>
-    const rp_current = "<data:post.url/>";
+    const rp_current = &quot;<data:post.url/>&quot;;
     const rp_max = 6; // 表示記事数
-    const rp_head = "関連記事"; // タイトル
+    const rp_head = &quot;関連記事&quot;; // タイトル
 
     //<![CDATA[
     (function(root, func) {
@@ -1060,25 +1065,25 @@ input.gsc-input{
     <script type='text/javascript'>RelatedPosts.counter();</script>
   </b:loop>
   <b:loop values='data:post.labels' var='label'>
-    <b:if cond='data:label.name contains "#" or data:label.name contains "/"'>
+    <b:if cond='data:label.name contains &quot;#&quot; or data:label.name contains &quot;/&quot;'>
       <script>
       (function() {
-        let encoded = "<data:label.name/>"
-        const keys = [/・/g, /&amp;amp;/g, /#/g, /\//g];
-        const reps = ["%E3%83%BB", "&amp;", "%23", "%2F"];
+        let encoded = &quot;<data:label.name/>&quot;
+        const keys = [/&#12539;/g, /&amp;amp;/g, /#/g, /\//g];
+        const reps = [&quot;%E3%83%BB&quot;, &quot;&amp;&quot;, &quot;%23&quot;, &quot;%2F&quot;];
         for (let i = 0; i &lt; keys.length; i++) {
           encoded = encoded.replace(keys[i], reps[i]);
         }      
-        const src = "/feeds/posts/summary/-/" + encoded + "?alt=json&amp;max-results=10&amp;callback=RelatedPosts.add";
-        const js = document.createElement("script");
-        js.type = "text/javascript";
+        const src = &quot;/feeds/posts/summary/-/&quot; + encoded + &quot;?alt=json&amp;max-results=10&amp;callback=RelatedPosts.add&quot;;
+        const js = document.createElement(&quot;script&quot;);
+        js.type = &quot;text/javascript&quot;;
         js.defer = true;
         js.src = src;
         document.head.appendChild(js);
       }());
       </script>
     <b:else/>
-      <script defer='defer' expr:src='"/feeds/posts/summary/-/" + data:label.name + "?alt=json&amp;max-results=10&amp;callback=RelatedPosts.add"' type='text/javascript'/>
+      <script defer='defer' expr:src='&quot;/feeds/posts/summary/-/&quot; + data:label.name + &quot;?alt=json&amp;max-results=10&amp;callback=RelatedPosts.add&quot;' type='text/javascript'/>
     </b:if>
   </b:loop>
   <style>
@@ -1101,7 +1106,7 @@ input.gsc-input{
     }
     .p-container:after {
       display: block;
-      content: "";
+      content: &quot;&quot;;
       width: 32%;
     }
     #related-posts a {
